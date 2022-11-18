@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggerService } from 'src/app/services/logger.service';
 
 @Component({
   selector: 'app-dynamic',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DynamicComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loggerService: LoggerService) { }
 
   ngOnInit(): void {
+    this.loggerService.log('Dynamic Component Loaded');
   }
 
 }

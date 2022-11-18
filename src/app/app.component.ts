@@ -3,12 +3,15 @@ import { Subject, Subscription } from 'rxjs';
 
 import { DynamicComponent } from './components/dynamic/dynamic.component';
 import { IData } from './models/idata';
+import { BetterLoggerService } from './services/better-loger.service';
 import { FetchService } from './services/fetch.service';
+import { LoggerService } from './services/logger.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [{provide: LoggerService, useClass: BetterLoggerService}]
 })
 export class AppComponent implements OnDestroy{
   title = 'AngularDynamicLoadingComponent';
@@ -23,7 +26,9 @@ export class AppComponent implements OnDestroy{
   private viewRef!: ViewContainerRef;
   private componentRef!: ComponentRef<DynamicComponent>;
 
-  constructor(public fetchService: FetchService) {}
+  constructor(public fetchService: FetchService,
+              private LoggerService: LoggerService,
+    ) {}
 
   ngOnDestroy(): void {
     this.fetchSub.unsubscribe();
@@ -34,10 +39,13 @@ export class AppComponent implements OnDestroy{
     this.componentRef = this.viewRef.createComponent(DynamicComponent);
     this.fetchSub = this.fetchService.fetchData()
     .subscribe(
-      (data) => this.$data.next(data)
+      (data) => {
+        this.$data.next(data);
+        this.LoggerService.log('Loaded')
+      }  
+      
     );
     this.isComponentInjected = true;
-    console.log(this.$data);
   }
 
   removeDynamicComponent() {
