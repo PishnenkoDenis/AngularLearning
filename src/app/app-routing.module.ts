@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { AboutComponent } from './components/about/about.component';
+import { FeaturesComponent } from './components/features/features.component';
+import { FormComponent } from './components/form/form.component';
+import { HomeComponent } from './components/home/home.component';
+import { HttpResolver } from './services/http.resolver';
+
+const routes: Routes = [
+  {path: 'features', resolve: {users: HttpResolver}, component: FeaturesComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'form', component: FormComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

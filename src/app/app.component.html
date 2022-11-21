@@ -1,20 +1,2 @@
-
-<div class="buttons-container">
-  <button 
-  type="button" 
-  class="btn btn-primary"
-  (click)="showDynamicComponent()"
-  >Show Component</button>
-  <button 
-  type="button" 
-  class="btn btn-danger"
-  (click)="removeDynamicComponent()"
-  [disabled]="!isComponentInjected"
-  >Remove Component</button>
-</div>
-<ng-template #dynamic></ng-template>
-<div class="pipe-container" *ngIf="isComponentInjected">
-  <span *ngFor="let item of $data | async" >
-    {{item.name}} - {{item.date}} - {{item.price}}
-  </span>
-</div>
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>

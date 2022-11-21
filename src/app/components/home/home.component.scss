@@ -1,0 +1,19 @@
+.buttons-container,
+.pipe-container {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    margin: auto;
+    margin-top: 3rem;
+}
+
+.pipe-container {
+    margin-top: 1rem;
+}
+
+.pending {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}

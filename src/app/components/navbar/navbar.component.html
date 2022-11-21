@@ -1,0 +1,45 @@
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <div 
+        class="navbar" 
+        id="navbarNav"
+        [style.width.%]="'100'"
+        >
+            <ul 
+            class="navbar-nav d-flex flex-row justify-content-around"
+            [style.width.%]="'100'"
+            >
+              <li class="nav-item">
+                <a 
+                class="nav-link active" 
+                aria-current="page" 
+                routerLink="home"
+                routerLinkActive="home"
+                >Home</a>
+              </li>
+              <li class="nav-item">
+                <a 
+                class="nav-link"
+                routerLink="features"
+                routerLinkActive="active-link"
+                >Features</a>
+              </li>
+              <li class="nav-item">
+                <a 
+                class="nav-link"
+                routerLink="about"
+                routerLinkActive="active-link"
+                >About</a>
+              </li>
+              <li class="nav-item">
+                <a 
+                class="nav-link"
+                routerLink="form"
+                routerLinkActive="active-link"
+                >Form</a>
+              </li>
+            </ul>
+          </div>
+    </div>
+</nav>

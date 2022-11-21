@@ -1,0 +1,22 @@
+<div class="buttons-container">
+    <button 
+    type="button" 
+    class="btn btn-primary"
+    (click)="showDynamicComponent()"
+    >Show Component</button>
+    <button 
+    type="button" 
+    class="btn btn-danger"
+    (click)="removeDynamicComponent()"
+    [disabled]="!isComponentInjected"
+    >Remove Component</button>
+</div>
+  <ng-template #dynamic></ng-template>
+  <div class="pipe-container" *ngIf="isComponentInjected; else pending">
+    <span *ngFor="let item of $data | async">
+      {{item.name}} - {{item.date | transform: 'DD MMM YYYY, h:mm:ss'}} - {{item.price | currency}}
+    </span>
+  </div>
+  <ng-template #pending>
+    <div class="pending" #pending>Waiting for the content</div>
+  </ng-template> 

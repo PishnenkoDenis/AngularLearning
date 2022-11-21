@@ -1,0 +1,62 @@
+<form 
+[formGroup]="form"
+style="width: 35rem;
+ margin: auto;
+ margin-top: 2rem;
+ border: 2px solid lightgrey;
+ padding: 1rem;
+ "
+>
+    <div class="mb-3">
+        <label 
+        for="exampleFormControlInput1" 
+        class="form-label"
+        >Name</label>
+        <input 
+        type="text" 
+        name="name"
+        class="form-control" 
+        formControlName="name"
+        id="exampleFormControlInput1" 
+        placeholder="Name"
+        >
+        <div *ngIf="name?.invalid && (name?.touched || name?.dirty)">
+            <span 
+            style="color: red; font-size: 12px;"
+            *ngIf="name?.errors?.['required']">
+                Enter the name
+            </span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label 
+        for="exampleFormControlInput1" 
+        class="form-label"
+        >Email address</label>
+        <input 
+        type="email" 
+        name="email"
+        class="form-control" 
+        formControlName="email"
+        id="exampleFormControlInput1" 
+        placeholder="name@example.com"
+        >
+        <div *ngIf="email?.invalid && (email?.touched || email?.dirty)">
+            <span 
+            style="color: red; font-size: 12px;"
+            *ngIf="email?.errors?.['required']">
+                Enter the email
+            </span>
+            <span 
+            style="color: red; font-size: 12px;"
+            *ngIf="email?.errors?.['email']">
+                Email must be valid
+            </span>
+        </div>
+    </div>
+    <button 
+    type="button" 
+    class="btn btn-secondary"
+    [disabled]="form.invalid"
+    >Secondary</button>
+</form>

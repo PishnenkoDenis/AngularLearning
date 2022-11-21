@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IData } from '../models/idata';
+import * as moment from 'moment';
 
 @Pipe({
   name: 'transform'
 })
 export class TransformPipe implements PipeTransform {
 
-  transform(value: IData[], args?: any): unknown {
-    return value;
+  transform(value: string, format: string) {
+     return `${moment().format(format)}${value}`
   }
 
 }
