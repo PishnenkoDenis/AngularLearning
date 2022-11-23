@@ -6,6 +6,7 @@ style="width: 35rem;
  border: 2px solid lightgrey;
  padding: 1rem;
  "
+ (ngSubmit)="addUser()"
 >
     <div class="mb-3">
         <label 
@@ -55,8 +56,7 @@ style="width: 35rem;
         </div>
     </div>
     <button 
-    type="button" 
+    type="submit" 
     class="btn btn-secondary"
-    [disabled]="form.invalid"
-    >Secondary</button>
+    >Submit</button>
 </form>

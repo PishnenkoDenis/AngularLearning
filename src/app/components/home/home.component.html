@@ -11,8 +11,14 @@
     [disabled]="!isComponentInjected"
     >Remove Component</button>
 </div>
-  <ng-template #dynamic></ng-template>
-  <div class="pipe-container" *ngIf="isComponentInjected; else pending">
+  <ng-template 
+  #dynamic
+  ></ng-template>
+  <div 
+  class="pipe-container" 
+  *ngIf="isComponentInjected; else pending"
+  @animationTrigger
+  >
     <span *ngFor="let item of $data | async">
       {{item.name}} - {{item.date | transform: 'DD MMM YYYY, h:mm:ss'}} - {{item.price | currency}}
     </span>

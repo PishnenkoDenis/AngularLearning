@@ -7,12 +7,24 @@ import { IData } from '../../models/idata';
 import { BetterLoggerService } from '../../services/better-loger.service';
 import { FetchService } from '../../services/fetch.service';
 import { LoggerService } from '../../services/logger.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  providers: [{provide: LoggerService, useClass: BetterLoggerService}]
+  providers: [{provide: LoggerService, useClass: BetterLoggerService}],
+  animations: [
+    trigger('animationTrigger', [
+     transition(':enter', [
+      style({opacity: 0}),
+      animate('1.3s', style({opacity: 1}))
+     ]),
+     transition(':leave', [
+      animate('1.3s', style({opacity: 0})),
+     ])
+    ])
+  ]
 })
 export class HomeComponent implements OnDestroy {
 

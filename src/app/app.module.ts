@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { HomeComponent } from './components/home/home.component';
 import { FontDirective } from './directives/font.directive';
 import { FormComponent } from './components/form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserComponent } from './components/user/user.component';
+import { SessionInterceptor } from './interceptors/session.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AboutComponent,
     HomeComponent,
     FontDirective,
-    FormComponent
+    FormComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,11 +38,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {provide: MOK_API_URL, useValue: 'http://localhost:3000/data'},
-    {provide: JSON_API_URL, useValue: 'https://jsonplaceholder.typicode.com/users'}
+    {provide: JSON_API_URL, useValue: 'https://jsonplaceholder.typicode.com/users'},
+    {provide: HTTP_INTERCEPTORS, useClass: SessionInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

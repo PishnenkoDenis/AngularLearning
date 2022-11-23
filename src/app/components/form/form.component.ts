@@ -11,7 +11,8 @@ export class FormComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,     
+    ) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -30,6 +31,11 @@ export class FormComponent implements OnInit {
 
   get email() {
     return this.form.get('email');
+  }
+
+  addUser() {
+    localStorage.setItem('user', JSON.stringify(this.form.value));
+    this.form.reset();
   }
 
 }

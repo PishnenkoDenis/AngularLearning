@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject, Subscription } from 'rxjs';
-import { FetchService } from 'src/app/services/fetch.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-features',

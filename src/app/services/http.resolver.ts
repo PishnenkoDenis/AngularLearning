@@ -5,7 +5,6 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
 import { JSON_API_URL } from '../tokens/tokens';
 
 @Injectable({

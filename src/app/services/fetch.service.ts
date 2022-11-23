@@ -23,4 +23,5 @@ export class FetchService {
   fetchUsers() {
     return this.httpClient.get(this.jsonApiUrl);
   }
+
 }

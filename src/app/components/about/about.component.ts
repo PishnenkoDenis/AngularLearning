@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { FetchService } from 'src/app/services/fetch.service';
 
@@ -13,10 +14,12 @@ export class AboutComponent implements OnInit, OnDestroy {
 
   userSub!: Subscription;
 
-  constructor(private fetchService: FetchService) { }
+  constructor(private fetchService: FetchService,
+              private router: Router
+    ) { }
 
   ngOnInit(): void {
-    this.fetchService.fetchUsers()
+    this.userSub = this.fetchService.fetchUsers()
     .subscribe(
       (users) => {
         this.$users.next(users);
